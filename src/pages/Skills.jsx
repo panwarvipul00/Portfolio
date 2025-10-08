@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaPython } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiTailwindcss,SiNextdotjs,SiMysql } from "react-icons/si";
+import { SiMongodb, SiExpress, SiTailwindcss,SiNextdotjs,SiMysql,SiDjango } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
 
 const skills = [
@@ -16,7 +16,8 @@ const skills = [
   { name: "Next.js", icon: <SiNextdotjs />, color: "text-black dark:text-white" },
   { name: "TailwindCSS", icon: <SiTailwindcss />, color: "text-[#06B6D4]" },
   { name: "Python", icon: <FaPython />, color: "text-[#3776AB]" },
-  { name: "Firebase", icon: <IoLogoFirebase />, color: "text-[#FFCA28]" }
+  { name: "Firebase", icon: <IoLogoFirebase />, color: "text-[#FFCA28]" },
+   { name: "Django", icon: <SiDjango />, color: "text-[#092E20]" }
 ];
 
 const staggerVariants = {
