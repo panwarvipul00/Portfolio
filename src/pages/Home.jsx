@@ -33,7 +33,7 @@ export default function Home() {
         </motion.div>
 
         {/* Intro Text */}
-        <div className="overflow-hidden w-full max-w-4xl mb-2">
+        <div className="overflow-hidden w-full max-w-xs sm:max-w-md md:max-w-4xl mb-2">
           <motion.h1
             initial={{ x: "100%" }}
             animate={{ x: "-100%" }}
@@ -42,7 +42,7 @@ export default function Home() {
               repeat: Infinity, 
               ease: "linear" 
             }}
-            className="text-4xl md:text-5xl font-extrabold text-white tracking-tight whitespace-nowrap"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight whitespace-nowrap"
           >
             Hi, I'm{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-500">
