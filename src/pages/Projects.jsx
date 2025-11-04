@@ -20,6 +20,14 @@ export default function Projects() {
       liveLink: "https://food-del-frontend-x0xy.onrender.com/",
       githubLink: "https://github.com/panwarvipul00/food-del",
     },
+    {
+      title: "MERN BLOG",
+      description:
+        "Built a full-stack Blogging web app. ",
+      tech: ["React", "Tailwind", "Node.js", "Express.js", "MongoDB", "JWT",],
+      liveLink: "https://blog-project2-mk0z.onrender.com/",
+      githubLink: "https://github.com/panwarvipul00/Blog-project",
+    },
     
   ];
 
