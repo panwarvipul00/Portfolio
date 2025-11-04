@@ -34,18 +34,18 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative py-24 bg-gradient-to-br from-purple-900 via-indigo-900 to-black"
+      className="relative py-24 bg-gray-950 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 text-center">
+      <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.5, y: -30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.6 }}
           viewport={{ once: true }}
           className="text-4xl font-bold text-white mb-14"
         >
-          My <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-500">Projects</span>
+          My <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-500">Projects</span>
         </motion.h2>
 
         {/* Projects Grid */}
@@ -53,11 +53,12 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 50, rotateX: 45 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2, type: "spring", stiffness: 100 }}
               viewport={{ once: true }}
-              className="p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-black/80 backdrop-blur-md border border-purple-700 hover:border-pink-500 hover:shadow-pink-500/30 transition duration-300"
+              whileHover={{ scale: 1.05, rotateY: 5, z: 50 }}
+              className="p-6 rounded-2xl shadow-lg bg-gradient-to-br from-gray-900/80 via-gray-800/70 to-black/80 backdrop-blur-md border border-gray-700 hover:border-sky-500 hover:shadow-sky-500/30 transition duration-300"
             >
               {/* Project Title */}
               <h3 className="text-2xl font-semibold text-white mb-3">
@@ -104,6 +105,18 @@ export default function Projects() {
           ))}
         </div>
       </div>
+      
+      {/* Animated Background Elements */}
+      <motion.div
+        className="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, -100, 100, 0], y: [0, 50, -50, 0], scale: [1, 1.4, 0.8, 1] }}
+        transition={{ repeat: Infinity, duration: 14 }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, 120, -120, 0], y: [0, -80, 80, 0], rotate: [0, 180, 360] }}
+        transition={{ repeat: Infinity, duration: 16 }}
+      />
     </section>
   );
 }

@@ -1,10 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import { FaDownload, FaEnvelope, FaFileAlt } from "react-icons/fa";
+import About from "./About";
+import Projects from "./Projects";
+import Skills from "./Skills";
+import Education from "./Education";
+import Contact from "./Contact";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden bg-gray-950">
+    <div className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 bg-gray-950">
       
       {/* Subtle Background Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[150px] animate-pulse"></div>
@@ -28,17 +33,24 @@ export default function Home() {
         </motion.div>
 
         {/* Intro Text */}
-        <motion.h1
-          initial={{ y: -30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-extrabold text-white mb-2 tracking-tight"
-        >
-          Hi, I'm{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-500">
-            Vipul Panwar
-          </span>
-        </motion.h1>
+        <div className="overflow-hidden w-full max-w-4xl mb-2">
+          <motion.h1
+            initial={{ x: "100%" }}
+            animate={{ x: "-100%" }}
+            transition={{ 
+              duration: 12, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+            className="text-4xl md:text-5xl font-extrabold text-white tracking-tight whitespace-nowrap"
+          >
+            Hi, I'm{" "}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-500">
+              Vipul Panwar
+            </span>
+            {" "} • Software Engineer • MERN Stack Developer • AI Enthusiast{" "} •{" "}
+          </motion.h1>
+        </div>
 
         <motion.p
           initial={{ y: 30, opacity: 0 }}
@@ -84,6 +96,13 @@ export default function Home() {
           </a>
         </motion.div>
       </div>
+      
+      {/* All Sections */}
+      <About />
+      <Skills />
+      <Projects />
+      <Education />
+      <Contact />
     </div>
   );
 }

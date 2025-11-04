@@ -51,9 +51,9 @@ export default function Skills() {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.5, y: -50 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.8 }}
           viewport={{ once: true, amount: 0.5 }}
           className="text-center mb-16 md:mb-24"
         >
@@ -75,8 +75,9 @@ export default function Skills() {
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              className="flex flex-col items-center justify-center p-6 bg-gray-900 rounded-xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl border border-gray-800"
+              className="flex flex-col items-center justify-center p-6 bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl border border-gray-700 hover:border-sky-500"
               variants={skillItemVariants}
+              whileHover={{ rotateY: 15, z: 50 }}
             >
               <div className={`text-5xl sm:text-6xl mb-4 transition-transform duration-300 group-hover:rotate-6 ${skill.color}`}>
                 {skill.icon}
@@ -87,9 +88,17 @@ export default function Skills() {
         </motion.div>
       </div>
 
-      {/* Subtle Background Gradients */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+      {/* Enhanced Background Gradients */}
+      <motion.div 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, 100, -100, 0], y: [0, -50, 50, 0], scale: [1, 1.3, 0.7, 1] }}
+        transition={{ repeat: Infinity, duration: 15 }}
+      />
+      <motion.div 
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, -80, 80, 0], y: [0, 60, -60, 0], rotate: [0, 180, 360] }}
+        transition={{ repeat: Infinity, duration: 18 }}
+      />
     </section>
   );
 }

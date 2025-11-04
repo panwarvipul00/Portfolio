@@ -33,22 +33,22 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"
+      className="relative py-24 bg-gray-950 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.5, y: -30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-16"
+          className="text-4xl font-bold text-center text-white mb-16"
         >
-          My <span className="text-blue-600">Education</span>
+          My <span className="text-sky-400">Education</span>
         </motion.h2>
 
         {/* Timeline */}
-        <div className="relative border-l-4 border-blue-500 dark:border-blue-400 ml-6">
+        <div className="relative border-l-4 border-sky-500 ml-6">
           {education.map((edu, index) => (
             <motion.div
               key={index}
@@ -59,24 +59,22 @@ export default function Education() {
               className="mb-12 ml-6"
             >
               {/* Icon */}
-              <span className="absolute -left-6 flex items-center justify-center w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-lg border-2 border-blue-500">
+              <span className="absolute -left-6 flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 shadow-lg border-2 border-sky-500">
                 {edu.icon}
               </span>
 
               {/* Card */}
-              <div
-                className={`p-6 rounded-2xl shadow-lg bg-gradient-to-br ${edu.color}`}
-              >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+              <div className="p-6 rounded-2xl shadow-lg bg-gray-800/80 backdrop-blur-sm border border-gray-700 hover:border-sky-500 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white">
                   {edu.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-300">
                   {edu.institution}
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <p className="text-sm text-gray-400 mt-1">
                   Year: {edu.year}
                 </p>
-                <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                <p className="text-sm font-semibold text-sky-400">
                   Marks: {edu.marks}
                 </p>
               </div>
@@ -84,6 +82,18 @@ export default function Education() {
           ))}
         </div>
       </div>
+      
+      {/* Animated Background Elements */}
+      <motion.div
+        className="absolute top-1/4 right-0 w-80 h-80 bg-sky-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, -100, 100, 0], y: [0, 50, -50, 0], scale: [1, 1.3, 0.8, 1] }}
+        transition={{ repeat: Infinity, duration: 14 }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, 120, -120, 0], y: [0, -60, 60, 0], rotate: [0, 180, 360] }}
+        transition={{ repeat: Infinity, duration: 16 }}
+      />
     </section>
   );
 }

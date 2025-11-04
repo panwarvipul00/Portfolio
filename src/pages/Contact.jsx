@@ -34,18 +34,18 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"
+      className="relative py-24 bg-gray-950 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.5, y: -30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-16"
+          className="text-4xl font-bold text-center text-white mb-16"
         >
-          Get In <span className="text-blue-600">Touch</span>
+          Get In <span className="text-sky-400">Touch</span>
         </motion.h2>
 
         {/* Contact Grid */}
@@ -53,16 +53,16 @@ export default function Contact() {
           {contacts.map((contact, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
+              initial={{ opacity: 0, scale: 0.8, rotateY: 45 }}
+              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2, type: "spring", stiffness: 120 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg cursor-pointer flex flex-col items-center justify-center space-y-4"
+              whileHover={{ scale: 1.1, rotateY: 10, z: 50 }}
+              className="p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-lg cursor-pointer flex flex-col items-center justify-center space-y-4 border border-gray-700 hover:border-sky-500 hover:shadow-sky-500/30 transition-all duration-300"
               onClick={() => setSelected(contact)}
             >
               <div className="text-4xl">{contact.icon}</div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-lg font-semibold text-white">
                 {contact.name}
               </h3>
             </motion.div>
@@ -76,16 +76,16 @@ export default function Contact() {
               initial={{ opacity: 0, scale: 0.7 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-2xl w-96 text-center relative"
+              className="bg-gray-900 p-8 rounded-2xl shadow-2xl w-96 text-center relative border border-gray-700"
             >
               <button
-                className="absolute top-3 right-4 text-gray-600 dark:text-gray-300 text-xl"
+                className="absolute top-3 right-4 text-gray-300 text-xl hover:text-white transition-colors"
                 onClick={() => setSelected(null)}
               >
                 ✕
               </button>
               <div className="text-5xl mb-4">{selected.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-xl font-bold text-white mb-2">
                 {selected.name}
               </h3>
               {selected.value.startsWith("http") ? (
@@ -93,12 +93,12 @@ export default function Contact() {
                   href={selected.value}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 dark:text-blue-400 underline"
+                  className="text-sky-400 underline hover:text-sky-300 transition-colors"
                 >
                   {selected.value}
                 </a>
               ) : (
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-300">
                   {selected.value}
                 </p>
               )}
@@ -106,6 +106,18 @@ export default function Contact() {
           </div>
         )}
       </div>
+      
+      {/* Animated Background Elements */}
+      <motion.div
+        className="absolute top-1/4 left-0 w-72 h-72 bg-sky-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, 80, -80, 0], y: [0, -40, 40, 0], scale: [1, 1.3, 0.9, 1] }}
+        transition={{ repeat: Infinity, duration: 12 }}
+      />
+      <motion.div
+        className="absolute bottom-1/4 right-0 w-80 h-80 bg-purple-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, -90, 90, 0], y: [0, 50, -50, 0], rotate: [0, 270, 360] }}
+        transition={{ repeat: Infinity, duration: 15 }}
+      />
     </section>
   );
 }

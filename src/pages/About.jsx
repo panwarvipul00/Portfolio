@@ -5,31 +5,31 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      className="relative py-24 bg-gray-950 overflow-hidden"
     >
       <div className="max-w-5xl mx-auto px-6 lg:px-12 text-center relative z-10">
         {/* Heading with animation */}
         <motion.h2
-          className="text-5xl font-extrabold text-gray-900 dark:text-white mb-8"
-          initial={{ opacity: 0, y: -40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          className="text-5xl font-extrabold text-white mb-8"
+          initial={{ opacity: 0, scale: 0.5, y: -40 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20, duration: 0.8 }}
         >
-          About <span className="text-blue-600">Me</span>
+          About <span className="text-sky-400">Me</span>
         </motion.h2>
 
         {/* About Text with subtle animation */}
         <motion.div
-          className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 40, rotateX: 45 }}
+          whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+          transition={{ duration: 1, type: "spring", stiffness: 100 }}
         >
           <p className="mb-6">
             Hello 👋, I’m{" "}
-            <span className="font-semibold text-blue-600">Vipul</span>, a
+            <span className="font-semibold text-sky-400">Vipul</span>, a
             <span className="font-semibold"> Software Engineer</span> and
-            <span className="text-blue-500"> AI Enthusiast</span> who loves
+            <span className="text-cyan-400"> AI Enthusiast</span> who loves
             building
             <span className="font-semibold"> modern, scalable web applications</span> and
             <span className="font-semibold"> AI-powered solutions</span>.
@@ -50,7 +50,7 @@ export default function About() {
 
           <p>
             🚀 My ultimate goal is to become a professional
-            <span className="text-blue-600 font-semibold"> AI Agent Developer</span>{" "}
+            <span className="text-sky-400 font-semibold"> AI Agent Developer</span>{" "}
             and build innovative solutions that make a real-world impact.
           </p>
         </motion.div>
@@ -58,14 +58,14 @@ export default function About() {
 
       {/* Background gradient effect with animation */}
       <motion.div
-        className="absolute top-0 left-0 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"
-        animate={{ x: [0, 30, -30, 0], y: [0, 20, -20, 0] }}
-        transition={{ repeat: Infinity, duration: 12 }}
+        className="absolute top-0 left-0 w-72 h-72 bg-sky-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, 50, -50, 0], y: [0, 30, -30, 0], scale: [1, 1.2, 0.8, 1] }}
+        transition={{ repeat: Infinity, duration: 10 }}
       />
       <motion.div
-        className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"
-        animate={{ x: [0, -40, 40, 0], y: [0, -20, 20, 0] }}
-        transition={{ repeat: Infinity, duration: 15 }}
+        className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl"
+        animate={{ x: [0, -60, 60, 0], y: [0, -40, 40, 0], scale: [1, 0.8, 1.3, 1] }}
+        transition={{ repeat: Infinity, duration: 12 }}
       />
     </section>
   );
