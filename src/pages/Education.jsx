@@ -7,7 +7,7 @@ export default function Education() {
     {
       year: "2019",
       title: "Secondary (10th)",
-      institution: "Jawahar navodaya vidyalaya",
+      institution: "Jawahar Navodaya Vidyalaya",
       marks: "84%",
       icon: <FaSchool className="text-pink-500" />,
       color: "from-pink-100 to-pink-200 dark:from-pink-900 dark:to-pink-700",
@@ -15,7 +15,7 @@ export default function Education() {
     {
       year: "2021",
       title: "Senior Secondary (12th)",
-      institution: "Jawahar navodaya vidyalaya",
+      institution: "Jawahar Navodaya Vidyalaya",
       marks: "76%",
       icon: <FaUniversity className="text-indigo-500" />,
       color: "from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-700",
